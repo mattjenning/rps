@@ -1,8 +1,10 @@
-const buttons = document.querySelectorAll('input')
+const buttons = document.querySelectorAll('input');
+const result = document.querySelector("#result");
+
 buttons.forEach(button=>{button.addEventListener('click',()=>{
     const playerSelection = button.value.toUpperCase();
     const computerSelection = getComputerChoice();
-    console.log(playRound(playerSelection, computerSelection));
+    result.textContent = (playRound(playerSelection, computerSelection));
 })
 })
 
@@ -19,8 +21,7 @@ function playRound(playerSelection, computerSelection){
         outcome = "TIED";
         outcomeVerb = " ties ";
     }
-    else if ((playerSelection == "ROCK" && computerSelection == "PAPER") ||
-             (playerSelection == "PAPER" && computerSelection == "SCISSORS") ||
+    else if ((playerSelection == "ROCK" && computerSelection == "SCISSORS") ||
              (playerSelection == "SCISSORS" && computerSelection == "ROCK")){
         outcome = "LOST";
         outcomeVerb = " loses to ";
